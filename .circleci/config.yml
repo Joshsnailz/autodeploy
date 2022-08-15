@@ -74,14 +74,14 @@ jobs:
       - run: npm i --prefix frontend
       - run: npm run test --prefix frontend
 
-  analyze_backend:
+  scan_backend:
     docker:
       - image: circleci/node:13.8.0
     steps:
       - checkout
       - run: npm audit --audit-level=critical --prefix backend
 
-  analyze_frontend:
+  scan_frontend:
     docker:
       - image: circleci/node:13.8.0
     steps:
@@ -342,23 +342,23 @@ workflows:
       - test_frontend:
           requires:
             - build_frontend
-      # - analyze_backend:
-      #     requires:
-      #       - test_backend
-      # - analyze_frontend:
-      #     requires:
-      #       - test_frontend
+      - scan_backend:
+          requires:
+            - test_backend
+      - scan_frontend:
+          requires:
+            - test_frontend
       # - deploy_backend_infrastructure:
       #     requires:
-      #       - analyze_backend
-      #       - analyze_frontend
+      #       - scan_backend
+      #       - scan_frontend
       #     filters:
       #       branches:
       #         only: [ master ]
       # - deploy_frontend_infrastructure:
       #     requires:
-      #       - analyze_backend
-      #       - analyze_frontend
+      #       - scan_backend
+      #       - scan_frontend
       #     filters:
       #       branches:
       #         only: [ master ]
