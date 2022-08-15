@@ -336,12 +336,12 @@ workflows:
     jobs:
       - build_backend
       - build_frontend
-      # - test_backend:
-      #     requires:
-      #       - build_backend
-      # - test_frontend:
-      #     requires:
-      #       - build_frontend
+      - test_backend:
+          requires:
+            - build_backend
+      - test_frontend:
+          requires:
+            - build_frontend
       # - analyze_backend:
       #     requires:
       #       - test_backend
