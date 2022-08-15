@@ -90,9 +90,7 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: npm install oauth-sign@^0.9.0
-      - run: npm install
-      - run: npm audit fix --audit-level=critical --force --prefix frontend
+      
 
   deploy_backend_infrastructure:
     docker:
