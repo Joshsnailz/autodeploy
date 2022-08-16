@@ -353,20 +353,20 @@ workflows:
       - scan_frontend:
           requires:
             - test_frontend
-      # - deploy_backend_infrastructure:
-      #     requires:
-      #       - scan_backend
-      #       - scan_frontend
-      #     filters:
-      #       branches:
-      #         only: [ master ]
-      # - deploy_frontend_infrastructure:
-      #     requires:
-      #       - scan_backend
-      #       - scan_frontend
-      #     filters:
-      #       branches:
-      #         only: [ master ]
+      - deploy_backend_infrastructure:
+          requires:
+            - scan_backend
+            - scan_frontend
+          filters:
+            branches:
+              only: [ master ]
+      - deploy_frontend_infrastructure:
+          requires:
+            - scan_backend
+            - scan_frontend
+          filters:
+            branches:
+              only: [ master ]
       # - run_db_migrations_for_backend:
       #     requires:
       #       - deploy_backend_infrastructure
