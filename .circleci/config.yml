@@ -249,7 +249,7 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: [54:f0:db:08:30:13:9d:06:35:11:cf:f0:69:4a:01:63]
+          fingerprints: [64:0d:26:83:09:d7:a4:8b:48:a7:d8:21:75:3c:52:82]
       - attach_workspace:
           at: ~/
       - install_ansible 
